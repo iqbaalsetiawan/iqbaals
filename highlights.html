@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Highlights — Iqbal Setiawan</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --bg-alt: #141414;
+    --border: #262626;
+    --text: #f2f2f2;
+    --text-muted: #9a9a9a;
+    --text-dim: #6b6b6b;
+    --pill-bg: #1a1a1a;
+    --max-w: 900px;
+  }
+  html[data-theme="light"] {
+    --bg: #fafafa;
+    --bg-alt: #ffffff;
+    --border: #e4e4e4;
+    --text: #131313;
+    --text-muted: #55555a;
+    --text-dim: #8a8a8a;
+    --pill-bg: #f0f0f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .nav {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-weight: 800; font-size: 15px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--text-muted); }
+  .nav-links a:hover { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .divider-v { width: 1px; height: 18px; background: var(--border); }
+  .theme-toggle {
+    width: 34px; height: 34px; border-radius: 8px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); display: flex; align-items: center;
+    justify-content: center; cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--text-dim); }
+
+  main { padding: 48px 0 80px; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .back-link:hover { color: var(--text); }
+
+  h1 { font-size: 32px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .lead { color: var(--text-muted); font-size: 16px; margin-bottom: 44px; }
+
+  .category { margin-bottom: 36px; padding-bottom: 32px; border-bottom: 1px dashed var(--border); }
+  .category:last-child { border-bottom: none; }
+  .category h3 { font-size: 15px; font-weight: 700; margin: 0 0 14px; }
+
+  .pill-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--pill-bg); border: 1px solid var(--border);
+    color: var(--text); padding: 8px 14px; border-radius: 8px;
+    font-size: 14px; font-weight: 500;
+  }
+  .pill svg{width:16px;height:16px;flex:none}
+  .project-tools{align-items:center}
+  .project-tools svg{width:18px;height:18px;flex:none}
+</style>
+<style>
+  .page-title { font-size: 40px; font-weight: 300; margin: 0 0 10px; letter-spacing: -0.02em; }
+  .lead { margin-bottom: 28px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 28px; border-bottom: 1px dashed var(--border); }
+  .filter-btn {
+    font: inherit; font-size: 14px; cursor: pointer; padding: 6px 16px; border-radius: 999px;
+    color: var(--text-muted); background: transparent; border: 1px solid var(--border);
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .filter-btn:hover { color: var(--text); border-color: var(--text-dim); }
+  .filter-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .year-group { padding-top: 36px; }
+  .year-group h2 { font-size: 34px; font-weight: 300; margin: 0 0 22px; letter-spacing: -0.02em; }
+  .hl-item {
+    display: grid; grid-template-columns: 380px 1fr; gap: 34px; align-items: start;
+    padding: 0 0 36px; margin-bottom: 36px; border-bottom: 1px dashed var(--border);
+  }
+  .year-group .hl-item:last-child { margin-bottom: 0; }
+  .hl-thumb {
+    aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; display: block;
+    border: 1px solid color-mix(in srgb, #4f9dff 25%, var(--border)); background: var(--bg-alt);
+  }
+  .hl-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hl-thumb.empty { display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 13px; }
+  .hl-kicker { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; }
+  .hl-title { font-size: 28px; font-weight: 300; line-height: 1.25; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .hl-sub { font-weight: 700; margin: 0 0 8px; }
+  .hl-desc { color: var(--text-muted); font-size: 16px; line-height: 1.75; margin: 0 0 18px; }
+  .hl-link {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+  }
+  .hl-link:hover { color: var(--text); }
+  .nav-links a.active { color: var(--text); }
+  .hl-media { display: flex; flex-direction: column; gap: 10px; }
+  .hl-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hl-gallery .hl-thumb { border-radius: 10px; }
+  .hl-empty { display: none; color: var(--text-dim); padding: 36px 0; }
+  @media (max-width: 760px) {
+    .hl-item { grid-template-columns: 1fr; gap: 18px; }
+    .page-title { font-size: 32px; }
+  }
+</style>
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">BAL</a>
+    <nav class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#education">Education</a>
+      <a href="highlights.html" class="active">Highlights</a>
+    </nav>
+    <div class="nav-right">
+      <div class="divider-v"></div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
+        <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <a class="back-link" href="index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    Back to Home
+  </a>
+
+  <h1 class="page-title">Highlights</h1>
+  <p class="lead">Selected work, milestones, and moments from my journey in tech and creative work.</p>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="work">Work</button>
+    <button class="filter-btn" data-filter="builds">Builds</button>
+    <button class="filter-btn" data-filter="community">Community</button>
+    <button class="filter-btn" data-filter="memories">Memories</button>
+  </div>
+
+  <!-- Edit entries below. data-cat must be: work, builds, community, or memories. Duplicate an <article> to add more; add a new .year-group for another year. -->
+  <section class="year-group">
+    <h2>2026</h2>
+
+    <article class="hl-item" data-cat="builds">
+      <a class="hl-thumb" href="https://tokokomp.site.je/" target="_blank" rel="noopener"><img src="assets/projects/techstore-screenshot.png" alt="Tech Store website" loading="lazy" /></a>
+      <div>
+        <div class="hl-kicker">Builds · Laravel</div>
+        <h3 class="hl-title">Tech Store — Toko Komputer</h3>
+        <p class="hl-desc">An online store for laptops, custom PCs, components, and computer accessories, with a product catalog, shopping cart, and admin panel.</p>
+        <a class="hl-link" href="https://tokokomp.site.je/" target="_blank" rel="noopener">Visit site ↗</a>
+      </div>
+    </article>
+
+    <article class="hl-item" data-cat="work">
+      <div class="hl-thumb empty">[Work thumbnail]</div>
+      <div>
+        <div class="hl-kicker">Work · [Year]</div>
+        <h3 class="hl-title">[Work highlight title]</h3>
+        <p class="hl-desc">[Write one or two sentences about this project, client, or milestone.]</p>
+        <a class="hl-link" href="#">View project ↗</a>
+      </div>
+    </article>
+
+    <article class="hl-item" data-cat="community">
+      <div class="hl-thumb empty">[Community photo]</div>
+      <div>
+        <div class="hl-kicker">Community</div>
+        <h3 class="hl-title">[Community or event title]</h3>
+        <p class="hl-desc">[Describe the meetup, workshop, or community activity you took part in.]</p>
+        <a class="hl-link" href="#">Explore ↗</a>
+      </div>
+    </article>
+  </section>
+  <section class="year-group">
+    <h2>2024</h2>
+
+    <article class="hl-item" data-cat="memories">
+      <div class="hl-media">
+        <a class="hl-thumb" href="assets/memories/m1.jpg" target="_blank" rel="noopener"><img src="assets/memories/m1.jpg" alt="Classmates posing together in the rice fields" loading="lazy" /></a>
+        <div class="hl-gallery">
+          <a class="hl-thumb" href="assets/memories/m1b.jpg" target="_blank" rel="noopener"><img src="assets/memories/m1b.jpg" alt="Female classmates posing together in the rice fields" loading="lazy" /></a>
+          <a class="hl-thumb" href="assets/memories/m1c.jpg" target="_blank" rel="noopener"><img src="assets/memories/m1c.jpg" alt="Classmates posing together, second shot" loading="lazy" /></a>
+        </div>
+      </div>
+      <div>
+        <div class="hl-kicker">Memories · SMAN 1 Trimurjo</div>
+        <h3 class="hl-title">Classmates in the Rice Fields</h3>
+        <p class="hl-desc">A day out with my high school classmates, gathered together among the rice fields. Three shots from the same day, and one of those moments I will always remember.</p>
+      </div>
+    </article>
+
+    <article class="hl-item" data-cat="memories">
+      <div class="hl-thumb"><img src="assets/memories/m2.jpg" alt="Friends standing together in a rice field under a wide sky" loading="lazy" /></div>
+      <div>
+        <div class="hl-kicker">Memories · SMAN 1 Trimurjo</div>
+        <h3 class="hl-title">Friends from High School</h3>
+        <p class="hl-desc">Posing with my friends under a wide open sky. Simple days, good company, and memories that last.</p>
+      </div>
+    </article>
+
+    <article class="hl-item" data-cat="memories">
+      <div class="hl-thumb"><img src="assets/memories/m3.jpg" alt="Friends in blue uniforms dancing and laughing in a classroom" loading="lazy" /></div>
+      <div>
+        <div class="hl-kicker">Memories · SMAN 1 Trimurjo</div>
+        <h3 class="hl-title">Fun Moments in Class</h3>
+        <p class="hl-desc">Laughing and dancing with my friends in our school uniforms. Some of my best memories happened right in the classroom.</p>
+      </div>
+    </article>
+  </section>
+  <p class="hl-empty" id="hlEmpty">Nothing here yet.</p>
+</main>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const iconMoon = document.getElementById('iconMoon');
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    iconMoon.innerHTML = theme === 'dark'
+      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
+      : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/>';
+  }
+  applyTheme(localStorage.getItem('theme') || 'dark');
+  toggle.addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
+
+<script>
+  (function () {
+    var btns = document.querySelectorAll('.filter-btn');
+    var items = document.querySelectorAll('.hl-item');
+    var groups = document.querySelectorAll('.year-group');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        btns.forEach(function (x) { x.classList.toggle('active', x === b); });
+        var f = b.dataset.filter, shown = 0;
+        items.forEach(function (it) {
+          var ok = f === 'all' || it.dataset.cat === f;
+          it.style.display = ok ? '' : 'none';
+          if (ok) shown++;
+        });
+        groups.forEach(function (g) {
+          var any = Array.prototype.some.call(g.querySelectorAll('.hl-item'), function (i) { return i.style.display !== 'none'; });
+          g.style.display = any ? '' : 'none';
+        });
+        document.getElementById('hlEmpty').style.display = shown ? 'none' : 'block';
+      });
+    });
+  })();
+</script>
+</body>
+</html>
